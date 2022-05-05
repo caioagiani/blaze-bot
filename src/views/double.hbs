@@ -1,0 +1,19 @@
+<div class="wrapper">
+  {{#each doubles}}
+    <div class="double {{ this.color }}" id="{{ this.id }}">
+      {{#if this.number}}
+        <p>{{ this.number }}</p>
+      {{else}}
+        <img src="/img/white.svg" />
+      {{/if}}
+    </div>
+  {{/each}}
+</div>
+
+<script type="text/javascript">
+  document.addEventListener('DOMContentLoaded', function() {
+    setInterval(function() {
+      location.reload();
+    }, 5000);
+  });
+</script>
