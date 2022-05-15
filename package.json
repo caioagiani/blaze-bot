@@ -24,7 +24,8 @@
     "express-handlebars": "^6.0.5",
     "mongoose": "^5.12.13",
     "node-cron": "^3.0.0",
-    "request": "^2.88.2"
+    "request": "^2.88.2",
+    "ws": "^8.6.0"
   },
   "devDependencies": {
     "@types/axios": "0.14.0",

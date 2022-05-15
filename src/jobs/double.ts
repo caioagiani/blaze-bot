@@ -1,26 +1,13 @@
-import * as cron from 'node-cron';
+import { BlazeAPI } from '../services/socket';
 import Double from '../database/schemas/double';
-import DoubleController from '../controllers/double';
 
-cron.schedule(
-  '*/15 * * * * *',
-  async () => {
-    const getDoubles = await DoubleController.crawl();
+const blazeSocketAPI = BlazeAPI();
 
-    getDoubles.records.map(async (record: any) => {
-      const checkValue = await Double.findOne({ id: record.id });
+blazeSocketAPI.event.on('double', async (data) => {
+  await Double.findOneAndUpdate({ id: data.id }, data, {
+    upsert: true,
+    new: true,
+  });
+});
 
-      if (checkValue) return;
-
-      await Double.create(record);
-    });
-
-    console.log('CRON: ON', new Date());
-  },
-  {
-    scheduled: true,
-    timezone: 'America/Sao_Paulo',
-  },
-);
-
-module.exports = cron;
+export default blazeSocketAPI;
