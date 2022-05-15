@@ -12,7 +12,9 @@ export default {
     return doubleRequest;
   },
   async index(_req: Request, res: Response) {
-    const values = await Double.find({}).sort({ created_at: -1 }).limit(198);
+    const values = await Double.find({ color: { $ne: null } })
+      .sort({ created_at: -1 })
+      .limit(234);
 
     const doubles = values.map((value: any) => {
       const { name, color } = colors[value.color];
