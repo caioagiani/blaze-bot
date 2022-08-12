@@ -18,6 +18,7 @@ app.engine(
     partialsDir: join(__dirname, 'views/partials'),
   }),
 );
+
 app.set('view engine', '.hbs');
 app.set('views', join(__dirname, 'views'));
 
