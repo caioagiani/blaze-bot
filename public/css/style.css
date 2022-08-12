@@ -10,7 +10,7 @@ body {
 
 .wrapper {
   background-color: #1A242D;
-  margin-top: 5rem;
+  margin-top: 2em;
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
